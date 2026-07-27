@@ -1,0 +1,12 @@
+{
+  "domain": "persona_rotator",
+  "name": "Persona of the Day",
+  "codeowners": ["@TheSchultz"],
+  "config_flow": true,
+  "documentation": "https://github.com/TheSchultz/ha-persona-of-the-day",
+  "integration_type": "service",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/TheSchultz/ha-persona-of-the-day/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}

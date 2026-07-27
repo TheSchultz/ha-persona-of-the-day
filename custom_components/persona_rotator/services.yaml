@@ -1,0 +1,45 @@
+rotate:
+  name: Re-roll persona
+  description: Force an immediate re-roll of today's persona.
+
+add:
+  name: Add persona
+  description: Add a single persona to the catalog (no-op if it already exists).
+  fields:
+    persona:
+      name: Persona
+      description: 'The persona text, e.g. "like a noir detective narrating his own coffee break".'
+      required: true
+      example: "like a noir detective narrating his own coffee break"
+      selector:
+        text:
+
+remove:
+  name: Remove persona
+  description: Remove a persona from the catalog (no-op if absent).
+  fields:
+    persona:
+      name: Persona
+      description: The exact persona text to remove.
+      required: true
+      selector:
+        text:
+
+import_personas:
+  name: Import personas
+  description: >-
+    Bulk-add personas, one per line. List markers and quotes are stripped;
+    entries over 120 characters or containing brackets are rejected with an
+    error. Duplicates are skipped.
+  fields:
+    personas:
+      name: Personas
+      description: One persona per line.
+      required: true
+      selector:
+        text:
+          multiline: true
+
+reset_catalog:
+  name: Reset catalog
+  description: Replace the current catalog with the built-in 121-persona default.

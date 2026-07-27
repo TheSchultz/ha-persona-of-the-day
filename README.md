@@ -1,4 +1,4 @@
-# Persona of the Day
+# Persona of the Day for Home Assistant
 
 **Give your Home Assistant voice assistant a new personality every day.**
 

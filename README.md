@@ -33,6 +33,13 @@ Gemini TTS  ──►  reads the direction, ACTS the line out loud
 
 ### 1. Install this integration
 
+**Prerequisite — HACS** (the community app store, not included in stock Home
+Assistant): if you don't have it yet, install it first via the
+[official HACS setup guide](https://www.hacs.xyz/docs/use/download/download/)
+(10 minutes, one-time). *No HACS? Manual alternative: download this repo and
+copy `custom_components/persona_rotator/` into your HA `config/custom_components/`
+folder, then restart — you'll just miss automatic updates.*
+
 [![Open your Home Assistant instance and add this repository to HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=TheSchultz&repository=ha-persona-of-the-day&category=integration)
 
 1. Click the badge above (or: HACS → three-dot menu → **Custom repositories** →

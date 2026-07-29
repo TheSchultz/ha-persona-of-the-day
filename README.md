@@ -134,7 +134,8 @@ Rules:
 
 ### 4. Wire up your voice pipeline
 
-Settings → Voice assistants → your assistant:
+Settings → Voice assistants → click the **"Home Assistant"** assistant
+card (that opens its editor):
 - **Conversation agent**: "Google AI Conversation"
 - **Speech-to-text**: "Google AI STT" (without this, voice input can't
   work — typing in Assist is all you'd get)

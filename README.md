@@ -33,12 +33,22 @@ Gemini TTS  ──►  reads the direction, ACTS the line out loud
 
 ### 1. Install this integration
 
-- HACS → three-dot menu → **Custom repositories** → add
-  `https://github.com/TheSchultz/ha-persona-of-the-day` (type: Integration)
-- Install **Persona of the Day**, restart Home Assistant
-- Settings → Devices & Services → **Add Integration** → Persona of the Day
+[![Open your Home Assistant instance and add this repository to HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=TheSchultz&repository=ha-persona-of-the-day&category=integration)
 
-You now have `sensor.persona_of_the_day` and a **Persona re-roll** button.
+1. Click the badge above (or: HACS → three-dot menu → **Custom repositories** →
+   add `https://github.com/TheSchultz/ha-persona-of-the-day`, type Integration)
+2. Click **Download**, then restart Home Assistant
+3. Click this badge to add the integration:
+
+   [![Open your Home Assistant instance and start setting up this integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=persona_rotator)
+
+   (or: Settings → Devices & Services → **Add Integration** → search "Persona of the Day")
+4. Click **Submit** on the confirmation screen — there is nothing to configure
+
+A notification appears with your guided next steps, and you now have
+`sensor.persona_of_the_day` (today's persona) and a **Persona re-roll**
+button — see them on the integration's **device page** (Settings → Devices &
+Services → Persona of the Day → 1 device).
 
 ### 2. Get your (free) Google AI key and add the conversation agent
 

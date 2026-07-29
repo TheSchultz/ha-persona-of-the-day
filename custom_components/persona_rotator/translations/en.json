@@ -7,14 +7,14 @@
       }
     },
     "abort": {
-      "already_configured": "Persona of the Day is already set up — there is only one persona per day."
+      "already_configured": "Persona of the Day is already set up \u2014 there is only one persona per day."
     }
   },
   "options": {
     "step": {
       "init": {
         "title": "Add personas",
-        "description": "Paste new personas below, one per line (e.g. from the persona generator prompt — see the README). Entries are validated: max 120 characters, no brackets. Duplicates are skipped automatically.",
+        "description": "Paste new personas below, one per line. Get great ones by giving any AI chatbot the [persona generator prompt](https://github.com/TheSchultz/ha-persona-of-the-day/blob/main/PERSONA_GENERATOR.md). Entries are validated (max 120 characters, no brackets \u2014 rejections are explained in the system log) and duplicates are skipped automatically.",
         "data": {
           "personas": "New personas (one per line)"
         }

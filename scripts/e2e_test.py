@@ -15,7 +15,8 @@ import sys
 import time
 import urllib.request
 
-BASE = "http://localhost:8124"
+import os
+BASE = os.environ.get("HA_TEST_BASE", "http://localhost:8124")
 CLIENT = f"{BASE}/"
 results = []
 
@@ -85,6 +86,28 @@ check("catalog seeded with 121", attrs.get("catalog_size") == 121,
 check("history started", attrs.get("history_count") == 1,
       f"history_count={attrs.get('history_count')}")
 first_persona = sensor.get("state")
+
+# --- 2b. Welcome notification fired on first setup ---
+# Persistent notifications are websocket-only (no entity since HA 2023).
+try:
+    import asyncio
+    import websockets
+
+    async def _get_notifications():
+        ws_url = BASE.replace("http", "ws", 1) + "/api/websocket"
+        async with websockets.connect(ws_url) as ws:
+            await ws.recv()
+            await ws.send(json.dumps({"type": "auth", "access_token": TOKEN}))
+            await ws.recv()
+            await ws.send(json.dumps({"id": 1, "type": "persistent_notification/get"}))
+            return json.loads(await ws.recv()).get("result", [])
+
+    notifs = asyncio.run(_get_notifications())
+    check("welcome notification created",
+          any(n.get("notification_id") == "persona_rotator_welcome" for n in notifs),
+          f"{len(notifs)} notification(s) present")
+except ImportError:
+    print("SKIP: welcome notification check (pip install websockets to enable)")
 
 # --- 3. Re-roll button ---
 status, _ = req("/api/services/button/press",

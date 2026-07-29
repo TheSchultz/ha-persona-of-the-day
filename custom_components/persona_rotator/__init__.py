@@ -18,6 +18,7 @@ import logging
 
 import voluptuous as vol
 
+from homeassistant.components import persistent_notification
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, ServiceCall, callback
 from homeassistant.exceptions import ServiceValidationError
@@ -36,6 +37,36 @@ CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 PERSONA_SCHEMA = vol.Schema({vol.Required("persona"): cv.string})
 IMPORT_SCHEMA = vol.Schema({vol.Required("personas"): cv.string})
 
+_REPO = "https://github.com/TheSchultz/ha-persona-of-the-day"
+
+# Shown once, right after first setup — the "now what?" hand-holding.
+# Setup succeeds silently otherwise, and a new user is left on the
+# integrations page with a working sensor and no idea how to wire it
+# into their voice assistant.
+WELCOME_MESSAGE = f"""**Persona of the Day is running.** Today's persona lives in
+`sensor.persona_of_the_day` — check it in
+[Developer Tools → States](/developer-tools/state).
+
+**To make your voice assistant use it (about 5 minutes):**
+
+1. Get a free Google AI key at
+   [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
+2. [Add the Google Generative AI integration](/config/integrations/dashboard)
+   and paste the key
+3. Copy the **persona prompt** from the
+   [setup guide]({_REPO}#3-paste-the-persona-prompt) into the conversation
+   agent's Instructions
+4. In [Settings → Voice assistants](/config/voice-assistants/assistants),
+   set both the conversation agent and text-to-speech to Google Generative AI
+
+**Growing your catalog:** use the
+[persona generator prompt]({_REPO}/blob/main/PERSONA_GENERATOR.md) with any
+AI chatbot, then paste the results via **Configure** on the
+[Persona of the Day integration](/config/integrations/integration/persona_rotator).
+
+Not feeling today's persona? Press the **Persona re-roll** button on the
+device page."""
+
 
 async def async_setup(hass: HomeAssistant, config) -> bool:
     """YAML setup is not supported; everything happens in async_setup_entry."""
@@ -48,6 +79,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     await rotator.load()
     await rotator.maybe_rotate()
+
+    # One-time welcome with guided next steps (first setup only).
+    if not entry.data.get("welcomed"):
+        persistent_notification.async_create(
+            hass,
+            WELCOME_MESSAGE,
+            title="Persona of the Day — next steps",
+            notification_id="persona_rotator_welcome",
+        )
+        hass.config_entries.async_update_entry(
+            entry, data={**entry.data, "welcomed": True}
+        )
 
     # Daily rotation at 00:00:01 local time. @callback is mandatory here:
     # without it HA dispatches via a worker thread and the thread-safety

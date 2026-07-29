@@ -54,8 +54,8 @@ Services → Persona of the Day → 1 device).
 
 - Get an API key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
   (Google account, free tier, no billing setup)
-- Settings → Devices & Services → **Add Integration** → **Google Generative AI**
-  → paste the key
+- Settings → Devices & Services → **Add Integration** → search "**Gemini**" →
+  **Google Gemini** (named "Google Generative AI" before HA 2026) → paste the key
 
 This one integration provides both the conversation agent (the brain) and a
 Gemini TTS entity (the voice) — Gemini's TTS is what makes personas *sound*
@@ -64,7 +64,7 @@ reading them aloud.
 
 ### 3. Paste the persona prompt
 
-Settings → Devices & Services → Google Generative AI → **Configure** (the
+Settings → Devices & Services → Google Gemini → **Configure** (the
 conversation agent) → set **Instructions** to:
 
 ```
@@ -87,8 +87,8 @@ Rules:
 ### 4. Wire up your voice pipeline
 
 Settings → Voice assistants → your assistant:
-- **Conversation agent**: Google Generative AI
-- **Text-to-speech**: Google Generative AI TTS (try different voices — they
+- **Conversation agent**: Google Gemini
+- **Text-to-speech**: Google Gemini TTS (try different voices — they
   take the persona directions differently)
 
 Say "what time is it?" — then say it again tomorrow. Different character.

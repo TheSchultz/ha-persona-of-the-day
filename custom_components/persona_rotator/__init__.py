@@ -51,13 +51,13 @@ WELCOME_MESSAGE = f"""**Persona of the Day is running.** Today's persona lives i
 
 1. Get a free Google AI key at
    [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
-2. [Add the Google Generative AI integration](/config/integrations/dashboard)
+2. [Add the Google Gemini integration](/config/integrations/dashboard)
    and paste the key
 3. Copy the **persona prompt** from the
    [setup guide]({_REPO}#3-paste-the-persona-prompt) into the conversation
    agent's Instructions
 4. In [Settings → Voice assistants](/config/voice-assistants/assistants),
-   set both the conversation agent and text-to-speech to Google Generative AI
+   set both the conversation agent and text-to-speech to Google Gemini
 
 **Growing your catalog:** use the
 [persona generator prompt]({_REPO}/blob/main/PERSONA_GENERATOR.md) with any

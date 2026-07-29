@@ -95,6 +95,31 @@ Settings → Voice assistants → your assistant:
 - **Text-to-speech**: Google Gemini TTS (try different voices — they
   take the persona directions differently)
 
+**Test it now, before any hardware**: open **Assist** (chat icon, top-right of
+the Overview dashboard) and type a question — the reply comes back in today's
+persona. Note: until this step 4 is saved, Assist answers everything with
+"Sorry, I couldn't understand that" — that's the built-in agent, not a bug.
+For *audible* browser testing, a microphone icon appears in the Assist dialog
+(requires Chrome-family browser on `localhost` or HTTPS; if it's missing
+after a settings change, hard-refresh the page).
+
+### 5. Give it ears (hardware)
+
+A voice assistant needs a device that *listens*. Amazon Echo and Google Home
+speakers cannot do this — their microphones only serve their own assistants.
+What works:
+
+| Device | Cost | Effort |
+|---|---|---|
+| [Home Assistant Voice Preview Edition](https://www.home-assistant.io/voice-pe/) | ~$59 | Plug in, assign your assistant, say "Okay Nabu" |
+| ESP32-S3-BOX / M5 Atom Echo (DIY satellite) | ~$15-50 | One-click ESPHome flash |
+| Spare phone/tablet with the HA Companion app | free | Assist built into the app |
+
+Your existing good speakers (Sonos, Cast, etc.) still matter — as the
+*output*. Replies can play through any `media_player`, so the classic setup
+is a small listening device on the shelf and answers through the big
+speakers. See [docs/speakers.md](docs/speakers.md).
+
 Say "what time is it?" — then say it again tomorrow. Different character.
 
 ## Adding your own personas

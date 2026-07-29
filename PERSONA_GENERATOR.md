@@ -32,8 +32,7 @@ What makes a good persona:
 
 Mix these flavors across the 15: fictional archetypes, historical or
 professional voices, absurd contradictions (a pirate doing customer
-service), emotional registers (barely containing excitement about
-everything), and delivery quirks (speaks only in questions).
+service), emotional registers, and delivery quirks.
 ```
 
 ---

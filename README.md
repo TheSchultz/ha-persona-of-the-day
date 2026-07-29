@@ -43,9 +43,13 @@ GitHub account). If you don't have it yet, install it first with the
 [official HACS guide](https://www.hacs.xyz/docs/use/download/download/) —
 choose the instructions matching your Home Assistant installation type.
 After installing its files, activate it via Settings → Devices & Services →
-Add Integration → "HACS" — it then appears in the left sidebar.
+Add Integration → "HACS". During its setup, sign in to GitHub fully first —
+the HACS device code goes on the "Device activation" page that appears
+*after* login (not into any two-factor prompt). Once done, **HACS lives in
+the left sidebar** — that's where you use the store from.
 
-1. In HACS, open the **three-dot menu** (top right) → **Custom repositories**
+1. Open **HACS from the left sidebar** (it appears there once installed and
+   activated), then open the **three-dot menu** (top right) → **Custom repositories**
 2. Paste `https://github.com/TheSchultz/ha-persona-of-the-day`,
    pick type **Integration**, click **Add**
 

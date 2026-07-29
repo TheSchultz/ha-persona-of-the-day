@@ -142,8 +142,9 @@ card (that opens its editor):
 - **Text-to-speech**: "Google AI TTS" (try different voices — they take
   the persona directions differently)
 
-**Test it now, before any hardware**: open **Assist** (chat icon, top-right of
-the Overview dashboard) and type a question — the reply comes back in today's
+**Test it now, before any hardware**: go to **Overview** (top of the left
+sidebar), click the **Assist chat icon** in the top-right corner, and type a
+question — the reply comes back in today's
 persona. Note: until this step 4 is saved, Assist answers everything with
 "Sorry, I couldn't understand that" — that's the built-in agent, not a bug.
 For *audible* browser testing, a microphone icon appears in the Assist dialog

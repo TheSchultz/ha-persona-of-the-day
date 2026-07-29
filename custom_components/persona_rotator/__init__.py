@@ -64,8 +64,9 @@ picked — see it (and the re-roll button) on the
    **Conversation agent** to "Google AI Conversation",
    **Speech-to-text** to "Google AI STT", and
    **Text-to-speech** to "Google AI TTS"
-5. Try it: open **Assist** (chat icon, top right of your dashboard) and
-   say hello — the answer comes back in character
+5. Try it: go to [Overview](/lovelace/0) (top of the left sidebar), click
+   the **Assist chat icon** in the top-right corner, and say hello — the
+   answer comes back in character
 
 **Growing your catalog:** use the
 [persona generator prompt]({_REPO}/blob/main/PERSONA_GENERATOR.md) with any

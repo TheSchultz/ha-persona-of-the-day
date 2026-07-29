@@ -136,6 +136,8 @@ Rules:
 
 Settings → Voice assistants → your assistant:
 - **Conversation agent**: "Google AI Conversation"
+- **Speech-to-text**: "Google AI STT" (without this, voice input can't
+  work — typing in Assist is all you'd get)
 - **Text-to-speech**: "Google AI TTS" (try different voices — they take
   the persona directions differently)
 

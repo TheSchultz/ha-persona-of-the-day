@@ -60,7 +60,8 @@ picked — see it (and the re-roll button) on the
    click the **gear icon on the "Google AI Conversation" service** — then
    under **"Control Home Assistant"**, tick **Persona of the Day**
 4. In [Settings → Voice assistants](/config/voice-assistants/assistants),
-   set **Conversation agent** to "Google AI Conversation" and
+   set **Conversation agent** to "Google AI Conversation",
+   **Speech-to-text** to "Google AI STT", and
    **Text-to-speech** to "Google AI TTS"
 5. Try it: open **Assist** (chat icon, top right of your dashboard) and
    say hello — the answer comes back in character

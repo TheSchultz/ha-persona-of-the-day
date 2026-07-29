@@ -12,21 +12,19 @@ subscription, no custom hardware, no YAML.
 
 ## How it works
 
-This integration provides `sensor.persona_of_the_day` — a daily,
-non-repeating persona picked from your catalog (no repeats within the last 30
-days, and editing the catalog never reshuffles the schedule). You reference
-that sensor in your voice assistant's prompt, and pair it with a TTS engine
-that understands voice directions. That's the whole trick.
+Each day this integration picks a fresh persona from your catalog — no
+repeats within 30 days — and offers itself to your conversation agent as a
+single checkbox. Tick it, and the daily persona plus its voice rules are
+injected automatically:
 
 ```
-persona_rotator (this integration)
-        │  sensor.persona_of_the_day = "like a posh Victorian ghost"
+persona_rotator ── today: "like a posh Victorian ghost"
+        ▼  (injected via one checkbox in the agent's settings)
+conversation agent ──► answers IN CHARACTER:
+                       [posh Victorian ghost, mildly offended]
+                       Dreadfully sorry, but it is seven o'clock.
         ▼
-conversation agent prompt  ──►  LLM answers IN CHARACTER, prefixed with a
-                                voice direction like [posh Victorian ghost,
-                                mildly offended]
-        ▼
-Gemini TTS  ──►  reads the direction, ACTS the line out loud
+Gemini TTS ──► performs the [direction] instead of reading it
 ```
 
 ## Setup (about 10 minutes)
@@ -38,15 +36,12 @@ Pick ONE of the two paths:
 <details open>
 <summary><b>Path A — via HACS</b> (recommended: you get update notifications)</summary>
 
-HACS is the community app store for Home Assistant (requires a free
-GitHub account). If you don't have it yet, install it first with the
-[official HACS guide](https://www.hacs.xyz/docs/use/download/download/) —
-choose the instructions matching your Home Assistant installation type.
-After installing its files, activate it via Settings → Devices & Services →
-Add Integration → "HACS". During its setup, sign in to GitHub fully first —
-the HACS device code goes on the "Device activation" page that appears
-*after* login (not into any two-factor prompt). Once done, **HACS lives in
-the left sidebar** — that's where you use the store from.
+HACS is the community app store (needs a free GitHub account). Don't have
+it? Install it with the [official guide](https://www.hacs.xyz/docs/use/download/download/)
+for your HA installation type, then activate it: Settings → Devices &
+Services → Add Integration → "HACS". (Tip: sign in to GitHub fully first —
+the HACS code goes on the "Device activation" page shown *after* login, not
+in a two-factor prompt.) HACS then lives in the **left sidebar**.
 
 1. Open **HACS from the left sidebar** (it appears there once installed and
    activated), then open the **three-dot menu** (top right) → **Custom repositories**
@@ -73,19 +68,17 @@ the left sidebar** — that's where you use the store from.
 
 </details>
 
-**Then, on either path:**
+**Then, on either path:** go to **Settings → Devices & Services → Add
+Integration**, search "**Persona of the Day**", and click **Submit** —
+there is nothing to configure.
 
-5. Go to **Settings → Devices & Services → Add Integration** and search
-   "**Persona of the Day**"
+[![Open your Home Assistant instance and start setting up this integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=persona_rotator)
 
-   [![Open your Home Assistant instance and start setting up this integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=persona_rotator)
-6. Click **Submit** — there is nothing to configure
-
-Done: `sensor.persona_of_the_day` now holds today's persona, and a
-**notification** (bell at the bottom of the left sidebar) appears with your
-next steps — which are exactly **steps 2-5 below**, so if you dismissed it
-or can't find it, just keep reading here. See it and the **Persona re-roll** button on the device
-page: Settings → Devices & Services → Persona of the Day → **1 device**.
+Done: today's persona is already picked, and a **notification** (bell at
+the bottom of the left sidebar) repeats steps 2-5 below as clickable
+links — dismissing it loses nothing. Find the sensor and the **Persona
+re-roll** button under Settings → Devices & Services → Persona of the Day
+→ **1 device**.
 
 ### 2. Get your (free) Google AI key and add the conversation agent
 
@@ -173,10 +166,10 @@ speakers. See [docs/speakers.md](docs/speakers.md).
 
 ## Adding your own personas
 
-Use the [persona generator prompt](PERSONA_GENERATOR.md) with any AI chatbot,
-then paste the output into **Settings → Devices & Services → Persona of the
-Day → Configure**. One persona per line; entries are validated and duplicates
-skipped. Power users can call the `persona_rotator.import_personas` service.
+Use the [persona generator prompt](PERSONA_GENERATOR.md) with any AI
+chatbot, then paste the output into **Settings → Devices & Services →
+Persona of the Day → Configure** (one per line). The dialog validates every
+line and reports exactly what was added, skipped, or rejected.
 
 ## Entities & services
 
@@ -189,21 +182,13 @@ skipped. Power users can call the `persona_rotator.import_personas` service.
 | `persona_rotator.import_personas` | Bulk paste, one per line |
 | `persona_rotator.reset_catalog` | Restore the built-in 121 |
 
-## Routing replies to better speakers
-
-By default, HA voice replies play on the device that heard you. If you want
-answers on proper speakers (Sonos etc.), the reliable pattern is a
-`media_player.play_media` call with **`announce: true`** — it bypasses queue
-managers and plays over whatever else is happening. Full guidance in
-[docs/speakers.md](docs/speakers.md).
-
 ## FAQ
 
-**Does it work with other conversation agents (Claude, OpenAI, local)?**
-Yes — any agent whose prompt can template `{{ states('sensor.persona_of_the_day') }}`.
-The bracket voice directions, however, only come alive with Gemini TTS; other
-TTS engines will read them aloud, so remove the bracket rule from the prompt
-if you use one.
+**Does it work with other conversation agents (Anthropic, OpenAI, Ollama)?**
+Yes — any agent with a **"Control Home Assistant"** setting shows the
+Persona of the Day checkbox; agents without it can use the manual prompt
+from step 3. Either way, the bracket voice directions only come alive with
+Gemini TTS — other TTS engines read them aloud.
 
 **Why doesn't the persona repeat?**
 The last 30 picks are excluded from eligibility. History is tracked by

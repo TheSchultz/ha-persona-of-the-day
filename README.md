@@ -54,8 +54,9 @@ Services → Persona of the Day → 1 device).
 
 - Get an API key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
   (Google account, free tier, no billing setup)
-- Settings → Devices & Services → **Add Integration** → search "**Gemini**" →
-  **Google Gemini** (named "Google Generative AI" before HA 2026) → paste the key
+- Settings → Devices & Services → **Add Integration** → search "**Gemini**" —
+  the result is the **Google** brand tile; click it, then pick **Google Gemini**
+  from Google's list (named "Google Generative AI" before HA 2026) → paste the key
 
 This one integration provides both the conversation agent (the brain) and a
 Gemini TTS entity (the voice) — Gemini's TTS is what makes personas *sound*

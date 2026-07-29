@@ -51,8 +51,8 @@ WELCOME_MESSAGE = f"""**Persona of the Day is running.** Today's persona lives i
 
 1. Get a free Google AI key at
    [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
-2. [Add the Google Gemini integration](/config/integrations/dashboard)
-   and paste the key
+2. [Add an integration](/config/integrations/dashboard): search "Gemini",
+   click the **Google** brand tile, pick **Google Gemini**, paste the key
 3. Copy the **persona prompt** from the
    [setup guide]({_REPO}#3-paste-the-persona-prompt) into the conversation
    agent's Instructions

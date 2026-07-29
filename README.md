@@ -57,6 +57,8 @@ Services → Persona of the Day → 1 device).
 - Settings → Devices & Services → **Add Integration** → search "**Gemini**" —
   the result is the **Google** brand tile; click it, then pick **Google Gemini**
   from Google's list (named "Google Generative AI" before HA 2026) → paste the key
+- A "Name and assign" screen lists the Gemini devices it created (Task,
+  Conversation, STT, TTS) — just click **Skip and finish**; nothing there is required
 
 This one integration provides both the conversation agent (the brain) and a
 Gemini TTS entity (the voice) — Gemini's TTS is what makes personas *sound*

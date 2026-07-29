@@ -17,7 +17,7 @@
     "step": {
       "init": {
         "title": "Add personas",
-        "description": "Paste new personas below, one per line \u2014 for example: like a noir detective narrating his own coffee break. Want a batch of great ones? Give any AI chatbot the [persona generator prompt](https://github.com/TheSchultz/ha-persona-of-the-day/blob/main/PERSONA_GENERATOR.md) and paste its output here. When you submit, you'll see a summary of what was added.",
+        "description": "Paste new personas below, one per line \u2014 for example: like a noir detective narrating his own coffee break. Want a batch of great ones? Give any AI chatbot the [persona generator prompt]({generator_url}) and paste its output here. When you submit, you'll see a summary of what was added.",
         "data": {
           "personas": "New personas (one per line)"
         }

@@ -76,4 +76,10 @@ class PersonaRotatorOptionsFlow(OptionsFlow):
                 }
             ),
             errors=errors,
+            description_placeholders={
+                "generator_url": (
+                    "https://github.com/TheSchultz/ha-persona-of-the-day"
+                    "/blob/main/PERSONA_GENERATOR.md"
+                )
+            },
         )

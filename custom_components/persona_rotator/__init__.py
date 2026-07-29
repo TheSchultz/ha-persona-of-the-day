@@ -149,32 +149,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.services.async_register(DOMAIN, "reset_catalog", handle_reset)
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
-
-    entry.async_on_unload(entry.add_update_listener(_async_options_updated))
     return True
-
-
-async def _async_options_updated(hass: HomeAssistant, entry: ConfigEntry) -> None:
-    """Import personas pasted into the options flow, then clear the buffer.
-
-    The options flow stores the pasted text under 'pending_import'; we
-    consume it here so re-opening options always shows an empty box.
-    """
-    pending = entry.options.get("pending_import", "")
-    if not pending:
-        return
-    rotator: PersonaRotator = hass.data[DOMAIN]
-    valid, rejected = parse_persona_lines(pending)
-    added = await rotator.add_many(valid)
-    _LOGGER.info(
-        "Options import: %d added, %d duplicates, %d rejected",
-        added, len(valid) - added, len(rejected),
-    )
-    if rejected:
-        _LOGGER.warning("Options import rejected: %s", "; ".join(rejected))
-    hass.config_entries.async_update_entry(
-        entry, options={k: v for k, v in entry.options.items() if k != "pending_import"}
-    )
 
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:

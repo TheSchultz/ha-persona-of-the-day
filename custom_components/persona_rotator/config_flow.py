@@ -2,8 +2,8 @@
 
 Setup is a single confirmation step (no configuration needed — the
 built-in catalog seeds on first boot). The options flow is the paste
-target for AI-generated personas: text goes into 'pending_import' and
-the update listener in __init__ validates and imports it.
+target for new personas: it validates inline, imports immediately, and
+ends with a result screen showing exactly what happened.
 """
 
 from __future__ import annotations
@@ -15,6 +15,7 @@ from homeassistant.core import callback
 from homeassistant.helpers.selector import TextSelector, TextSelectorConfig
 
 from .const import CONF_IMPORT_TEXT, DOMAIN
+from .rotator import parse_persona_lines
 
 
 class PersonaRotatorConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -36,15 +37,35 @@ class PersonaRotatorConfigFlow(ConfigFlow, domain=DOMAIN):
 
 
 class PersonaRotatorOptionsFlow(OptionsFlow):
-    """Paste box for adding personas (one per line)."""
+    """Paste box for adding personas — validates and imports in-dialog."""
 
     async def async_step_init(self, user_input=None) -> ConfigFlowResult:
+        errors: dict[str, str] = {}
         if user_input is not None:
-            pasted = user_input.get(CONF_IMPORT_TEXT, "").strip()
-            options = dict(self.config_entry.options)
-            if pasted:
-                options["pending_import"] = pasted
-            return self.async_create_entry(title="", data=options)
+            text = user_input.get(CONF_IMPORT_TEXT, "").strip()
+            if not text:
+                errors["base"] = "empty"
+            else:
+                valid, rejected = parse_persona_lines(text)
+                if not valid:
+                    errors["base"] = "no_valid"
+                else:
+                    rotator = self.hass.data[DOMAIN]
+                    added = await rotator.add_many(valid)
+                    details = ""
+                    if rejected:
+                        details = " Rejected: " + "; ".join(rejected[:3])
+                        if len(rejected) > 3:
+                            details += f" (+{len(rejected) - 3} more)"
+                    return self.async_abort(
+                        reason="import_result",
+                        description_placeholders={
+                            "added": str(added),
+                            "duplicates": str(len(valid) - added),
+                            "rejected": str(len(rejected)),
+                            "details": details,
+                        },
+                    )
         return self.async_show_form(
             step_id="init",
             data_schema=vol.Schema(
@@ -54,4 +75,5 @@ class PersonaRotatorOptionsFlow(OptionsFlow):
                     ),
                 }
             ),
+            errors=errors,
         )

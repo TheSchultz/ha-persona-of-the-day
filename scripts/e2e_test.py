@@ -148,8 +148,9 @@ status, oflow = req(f"/api/config/config_entries/options/flow",
 check("options flow opens", status == 200 and oflow.get("step_id") == "init",
       f"status={status}")
 status, odone = req(f"/api/config/config_entries/options/flow/{oflow['flow_id']}",
-                    {"personas": "like an options flow test persona"}, TOKEN)
-check("options flow submits", odone.get("type") == "create_entry", f"type={odone.get('type')}")
+                    {"personas": "like an options flow test persona\n[bad line]"}, TOKEN)
+check("options flow shows import result", odone.get("type") == "abort"
+      and odone.get("reason") == "import_result", f"{odone.get('type')}/{odone.get('reason')}")
 time.sleep(2)
 _, sensor4 = req("/api/states/sensor.persona_of_the_day", token=TOKEN)
 check("options paste imported", "like an options flow test persona" in sensor4["attributes"]["catalog"])

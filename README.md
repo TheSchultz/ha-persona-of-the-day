@@ -102,11 +102,23 @@ Gemini TTS entity (the voice) — Gemini's TTS is what makes personas *sound*
 like personas, because it interprets `[bracketed voice directions]` instead of
 reading them aloud.
 
-### 3. Paste the persona prompt
+### 3. Turn on the persona (one checkbox)
 
 Settings → Devices & Services → **Google Gemini** → find the **Google AI
 Conversation** service (labeled "Conversation agent") → click **its gear
-icon** → replace the **Instructions** field with:
+icon** → under **"Control Home Assistant"**, tick **Persona of the Day**
+in the list → Save.
+
+That's it — the daily persona and its voice rules are now injected into
+the agent automatically, always current, no copying. It even adds a voice
+command: say *"give me a different personality"* and the agent re-rolls
+the persona on the spot.
+
+<details>
+<summary><b>Manual alternative</b> (for conversation agents without the
+"Control Home Assistant" option)</summary>
+
+Paste this into the agent's Instructions/prompt field:
 
 ```
 You are a home voice assistant. Today, you speak and act
@@ -124,6 +136,8 @@ Rules:
 - Stay in character for phrasing and attitude, but never let the persona
   refuse a real answer or a device action.
 ```
+
+</details>
 
 ### 4. Wire up your voice pipeline
 

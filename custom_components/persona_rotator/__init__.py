@@ -21,11 +21,13 @@ import voluptuous as vol
 from homeassistant.components import persistent_notification
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, ServiceCall, callback
-from homeassistant.exceptions import ServiceValidationError
+from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from homeassistant.helpers import config_validation as cv
+from homeassistant.helpers import llm
 from homeassistant.helpers.event import async_track_time_change
 
 from .const import DOMAIN
+from .llm_api import PersonaAPI
 from .rotator import PersonaRotator, parse_persona_lines
 
 _LOGGER = logging.getLogger(__name__)
@@ -54,9 +56,8 @@ WELCOME_MESSAGE = f"""**Persona of the Day is running.** Today's persona lives i
 2. [Add an integration](/config/integrations/dashboard): search "Gemini",
    click the **Google** brand tile, pick **Google Gemini**, paste the key
    (click *Skip and finish* on the "Name and assign" screen that follows)
-3. Copy the **persona prompt** from the
-   [setup guide]({_REPO}#3-paste-the-persona-prompt) into the conversation
-   agent's Instructions
+3. In the Gemini conversation agent's settings, find **"Control Home
+   Assistant"** and tick **Persona of the Day** in the list
 4. In [Settings → Voice assistants](/config/voice-assistants/assistants),
    set both the conversation agent and text-to-speech to Google Gemini
 
@@ -80,6 +81,15 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     await rotator.load()
     await rotator.maybe_rotate()
+
+    # Register the LLM API: makes "Persona of the Day" a checkbox in every
+    # LLM conversation agent's settings — the zero-paste setup path.
+    try:
+        unregister = llm.async_register_api(hass, PersonaAPI(hass))
+        if callable(unregister):
+            entry.async_on_unload(unregister)
+    except HomeAssistantError as err:
+        _LOGGER.warning("Could not register LLM API (already registered?): %s", err)
 
     # One-time welcome with guided next steps (first setup only).
     if not entry.data.get("welcomed"):

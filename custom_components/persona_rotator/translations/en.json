@@ -8,6 +8,9 @@
     },
     "abort": {
       "already_configured": "Persona of the Day is already set up \u2014 there is only one persona per day."
+    },
+    "create_entry": {
+      "default": "Persona of the Day is running \u2014 today's persona is already picked. Next: open Notifications (the bell at the bottom of the left sidebar) for the 5-minute guide to connecting your voice assistant."
     }
   },
   "options": {

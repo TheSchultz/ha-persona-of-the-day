@@ -171,8 +171,6 @@ Your existing good speakers (Sonos, Cast, etc.) still matter — as the
 is a small listening device on the shelf and answers through the big
 speakers. See [docs/speakers.md](docs/speakers.md).
 
-Say "what time is it?" — then say it again tomorrow. Different character.
-
 ## Adding your own personas
 
 Use the [persona generator prompt](PERSONA_GENERATOR.md) with any AI chatbot,

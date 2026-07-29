@@ -55,7 +55,9 @@ the left sidebar** — that's where you use the store from.
 
    [![Open your Home Assistant instance and add this repository to HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=TheSchultz&repository=ha-persona-of-the-day&category=integration)
    *(this badge does steps 1-2 for you)*
-3. Find **Persona of the Day** in HACS, click **Download**
+3. **Adding the repository only lists it in the store — it is not installed
+   yet.** Now search "Persona of the Day" in HACS's main list, open it, and
+   click the **Download** button (bottom right)
 4. **Restart Home Assistant** (Settings → System → Restart)
 
 </details>

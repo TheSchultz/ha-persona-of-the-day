@@ -29,9 +29,6 @@ What makes a good persona:
   question as a losing position" is strong.
 - Specific beats generic: "like a 1940s radio announcer with crackling
   delivery" beats "like an old-timey announcer".
-- It must survive mundane content: this voice will announce timers and
-  weather. Personas that only work for drama fall flat.
-- Family-friendly, and funny through delivery rather than insult.
 
 Mix these flavors across the 15: fictional archetypes, historical or
 professional voices, absurd contradictions (a pirate doing customer

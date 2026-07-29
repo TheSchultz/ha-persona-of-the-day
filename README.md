@@ -38,10 +38,12 @@ Pick ONE of the two paths:
 <details open>
 <summary><b>Path A — via HACS</b> (recommended: you get update notifications)</summary>
 
-HACS is the community app store for Home Assistant. If you don't have it
-yet, install it first with the
+HACS is the community app store for Home Assistant (requires a free
+GitHub account). If you don't have it yet, install it first with the
 [official HACS guide](https://www.hacs.xyz/docs/use/download/download/) —
 choose the instructions matching your Home Assistant installation type.
+After installing its files, activate it via Settings → Devices & Services →
+Add Integration → "HACS" — it then appears in the left sidebar.
 
 1. In HACS, open the **three-dot menu** (top right) → **Custom repositories**
 2. Paste `https://github.com/TheSchultz/ha-persona-of-the-day`,
@@ -73,9 +75,10 @@ choose the instructions matching your Home Assistant installation type.
    [![Open your Home Assistant instance and start setting up this integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=persona_rotator)
 6. Click **Submit** — there is nothing to configure
 
-Done: a **notification** (bell at the bottom of the left sidebar) appears
-with your guided next steps, and `sensor.persona_of_the_day` now holds
-today's persona. See it and the **Persona re-roll** button on the device
+Done: `sensor.persona_of_the_day` now holds today's persona, and a
+**notification** (bell at the bottom of the left sidebar) appears with your
+next steps — which are exactly **steps 2-5 below**, so if you dismissed it
+or can't find it, just keep reading here. See it and the **Persona re-roll** button on the device
 page: Settings → Devices & Services → Persona of the Day → **1 device**.
 
 ### 2. Get your (free) Google AI key and add the conversation agent

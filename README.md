@@ -135,9 +135,9 @@ Rules:
 ### 4. Wire up your voice pipeline
 
 Settings → Voice assistants → your assistant:
-- **Conversation agent**: Google Gemini
-- **Text-to-speech**: Google Gemini TTS (try different voices — they
-  take the persona directions differently)
+- **Conversation agent**: "Google AI Conversation"
+- **Text-to-speech**: "Google AI TTS" (try different voices — they take
+  the persona directions differently)
 
 **Test it now, before any hardware**: open **Assist** (chat icon, top-right of
 the Overview dashboard) and type a question — the reply comes back in today's

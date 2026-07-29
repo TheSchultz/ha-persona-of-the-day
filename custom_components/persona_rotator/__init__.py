@@ -56,10 +56,12 @@ picked — see it (and the re-roll button) on the
 2. [Add an integration](/config/integrations/dashboard): search "Gemini",
    click the **Google** brand tile, pick **Google Gemini**, paste the key
    (click *Skip and finish* on the "Name and assign" screen that follows)
-3. In the Gemini conversation agent's settings, find **"Control Home
-   Assistant"** and tick **Persona of the Day** in the list
+3. On the [Google Gemini integration page](/config/integrations/integration/google_generative_ai_conversation),
+   click the **gear icon on the "Google AI Conversation" service** — then
+   under **"Control Home Assistant"**, tick **Persona of the Day**
 4. In [Settings → Voice assistants](/config/voice-assistants/assistants),
-   set both the conversation agent and text-to-speech to Google Gemini
+   set **Conversation agent** to "Google AI Conversation" and
+   **Text-to-speech** to "Google AI TTS"
 5. Try it: open **Assist** (chat icon, top right of your dashboard) and
    say hello — the answer comes back in character
 
@@ -68,8 +70,8 @@ picked — see it (and the re-roll button) on the
 AI chatbot, then paste the results via **Configure** on the
 [Persona of the Day integration](/config/integrations/integration/persona_rotator).
 
-Not feeling today's persona? Press the **Persona re-roll** button on the
-device page."""
+Not feeling today's persona? The **re-roll button** on that same device
+page picks a new one instantly."""
 
 
 async def async_setup(hass: HomeAssistant, config) -> bool:

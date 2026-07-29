@@ -5,7 +5,7 @@
 One day it's a posh Victorian ghost. The next, a 1940s radio announcer. Then a
 conspiracy theorist whispering in a basement. Same smart home, same commands —
 a completely different character answers, every single day, picked from a
-catalog of **121 built-in personas** (and infinitely extendable with your own).
+catalog of **123 built-in personas** (and infinitely extendable with your own).
 
 It works with stock Home Assistant and **one free API key**. No cloud
 subscription, no custom hardware, no YAML.
@@ -184,7 +184,7 @@ line and reports exactly what was added, skipped, or rejected.
 | `persona_rotator.rotate` | Same as the button, as a service |
 | `persona_rotator.add` / `remove` | Single-persona catalog edits |
 | `persona_rotator.import_personas` | Bulk paste, one per line |
-| `persona_rotator.reset_catalog` | Restore the built-in 121 |
+| `persona_rotator.reset_catalog` | Restore the built-in 123 |
 
 ## FAQ
 

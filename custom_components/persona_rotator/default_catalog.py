@@ -27,6 +27,8 @@ DEFAULT_CATALOG: list[str] = [
     'like an evil robot having an existential crisis',
     'like a robot who is bored, not amused, and completely fed up with the human race',
     'like a panicked sports commentator',
+    'like a drill sergeant barking every answer as an order',
+    'like an American NFL commentator calling every event as a game-winning play',
     'like a hard-boiled noir detective, gravelly and world-weary',
     'like a calm meditation guide, soft and serene',
     'in a heavy Russian accent, stern and deliberate',

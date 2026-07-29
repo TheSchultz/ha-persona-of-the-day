@@ -42,4 +42,4 @@ import_personas:
 
 reset_catalog:
   name: Reset catalog
-  description: Replace the current catalog with the built-in 121-persona default.
+  description: Replace the current catalog with the built-in 123-persona default.

@@ -67,8 +67,9 @@ reading them aloud.
 
 ### 3. Paste the persona prompt
 
-Settings → Devices & Services → Google Gemini → **Configure** (the
-conversation agent) → set **Instructions** to:
+Settings → Devices & Services → **Google Gemini** → find the **Google AI
+Conversation** service (labeled "Conversation agent") → click **its gear
+icon** → replace the **Instructions** field with:
 
 ```
 You are a home voice assistant. Today, you speak and act

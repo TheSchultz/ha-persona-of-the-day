@@ -35,7 +35,7 @@ data:
   media_player_entity_id: media_player.living_room
   message: "{{ your_text }}"
 target:
-  entity_id: tts.google_generative_ai_tts
+  entity_id: tts.google_ai_tts
 ```
 
 The `tts.speak` service handles the media routing; for advanced setups

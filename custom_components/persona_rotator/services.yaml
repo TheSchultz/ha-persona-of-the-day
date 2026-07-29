@@ -4,7 +4,7 @@ rotate:
 
 add:
   name: Add persona
-  description: Add a single persona to the catalog (no-op if it already exists).
+  description: Add a single persona to the catalog (does nothing if it already exists).
   fields:
     persona:
       name: Persona
@@ -16,7 +16,7 @@ add:
 
 remove:
   name: Remove persona
-  description: Remove a persona from the catalog (no-op if absent).
+  description: Remove a persona from the catalog (does nothing if it isn't there).
   fields:
     persona:
       name: Persona

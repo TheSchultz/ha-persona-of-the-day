@@ -2,8 +2,8 @@
 
 Want more personas? Paste the prompt below into any AI chatbot (Claude,
 ChatGPT, Gemini — all work). Then paste its output into Home Assistant:
-**Settings → Devices & Services → Persona of the Day → Configure**, or call
-the `persona_rotator.import_personas` service.
+**Settings → Devices & Services → Persona of the Day → Configure** — you'll
+get a summary of what was added.
 
 ---
 

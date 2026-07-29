@@ -45,9 +45,9 @@ _REPO = "https://github.com/TheSchultz/ha-persona-of-the-day"
 # Setup succeeds silently otherwise, and a new user is left on the
 # integrations page with a working sensor and no idea how to wire it
 # into their voice assistant.
-WELCOME_MESSAGE = f"""**Persona of the Day is running.** Today's persona lives in
-`sensor.persona_of_the_day` — check it in
-[Developer Tools → States](/developer-tools/state).
+WELCOME_MESSAGE = f"""**Persona of the Day is running.** Today's persona is already
+picked — see it (and the re-roll button) on the
+[device page](/config/integrations/integration/persona_rotator).
 
 **To make your voice assistant use it (about 5 minutes):**
 
@@ -60,6 +60,8 @@ WELCOME_MESSAGE = f"""**Persona of the Day is running.** Today's persona lives i
    Assistant"** and tick **Persona of the Day** in the list
 4. In [Settings → Voice assistants](/config/voice-assistants/assistants),
    set both the conversation agent and text-to-speech to Google Gemini
+5. Try it: open **Assist** (chat icon, top right of your dashboard) and
+   say hello — the answer comes back in character
 
 **Growing your catalog:** use the
 [persona generator prompt]({_REPO}/blob/main/PERSONA_GENERATOR.md) with any

@@ -68,6 +68,11 @@ picked — see it (and the re-roll button) on the
    the **Assist chat icon** in the top-right corner, and say hello — the
    answer comes back in character
 
+**Ready for real speakers?** The
+[hardware guide]({_REPO}#5-give-it-ears-hardware) covers listening devices
+(from ~$15 to the official $59 Voice Preview Edition) and how to route
+replies through your good speakers.
+
 **Growing your catalog:** use the
 [persona generator prompt]({_REPO}/blob/main/PERSONA_GENERATOR.md) with any
 AI chatbot, then paste the results via **Configure** on the

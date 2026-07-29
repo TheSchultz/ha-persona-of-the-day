@@ -33,31 +33,50 @@ Gemini TTS  ──►  reads the direction, ACTS the line out loud
 
 ### 1. Install this integration
 
-**Prerequisite — HACS** (the community app store, not included in stock Home
-Assistant): if you don't have it yet, install it first via the
-[official HACS setup guide](https://www.hacs.xyz/docs/use/download/download/)
-(10 minutes, one-time — **pick the instructions for your HA installation
-type**: on Home Assistant OS it's a guided add-on-style setup, on Container
-installs it's a short shell command; there is no app store on Container). *No HACS? Manual alternative: download this repo and
-copy `custom_components/persona_rotator/` into your HA `config/custom_components/`
-folder, then restart — you'll just miss automatic updates.*
+Pick ONE of the two paths:
 
-[![Open your Home Assistant instance and add this repository to HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=TheSchultz&repository=ha-persona-of-the-day&category=integration)
+<details open>
+<summary><b>Path A — via HACS</b> (recommended: you get update notifications)</summary>
 
-1. Click the badge above (or: HACS → three-dot menu → **Custom repositories** →
-   add `https://github.com/TheSchultz/ha-persona-of-the-day`, type Integration)
-2. Click **Download**, then restart Home Assistant
-3. Click this badge to add the integration:
+HACS is the community app store for Home Assistant. If you don't have it
+yet, install it first with the
+[official HACS guide](https://www.hacs.xyz/docs/use/download/download/) —
+choose the instructions matching your Home Assistant installation type.
+
+1. In HACS, open the **three-dot menu** (top right) → **Custom repositories**
+2. Paste `https://github.com/TheSchultz/ha-persona-of-the-day`,
+   pick type **Integration**, click **Add**
+
+   [![Open your Home Assistant instance and add this repository to HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=TheSchultz&repository=ha-persona-of-the-day&category=integration)
+   *(this badge does steps 1-2 for you)*
+3. Find **Persona of the Day** in HACS, click **Download**
+4. **Restart Home Assistant** (Settings → System → Restart)
+
+</details>
+
+<details>
+<summary><b>Path B — manual copy</b> (no HACS, no automatic updates)</summary>
+
+1. [Download this repository as a ZIP](https://github.com/TheSchultz/ha-persona-of-the-day/archive/refs/heads/main.zip) and unpack it
+2. Copy the folder `custom_components/persona_rotator` into your Home
+   Assistant `config/custom_components/` folder (create
+   `custom_components` if it doesn't exist)
+3. **Restart Home Assistant** (Settings → System → Restart)
+
+</details>
+
+**Then, on either path:**
+
+5. Go to **Settings → Devices & Services → Add Integration** and search
+   "**Persona of the Day**"
 
    [![Open your Home Assistant instance and start setting up this integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=persona_rotator)
+6. Click **Submit** — there is nothing to configure
 
-   (or: Settings → Devices & Services → **Add Integration** → search "Persona of the Day")
-4. Click **Submit** on the confirmation screen — there is nothing to configure
-
-A notification appears with your guided next steps, and you now have
-`sensor.persona_of_the_day` (today's persona) and a **Persona re-roll**
-button — see them on the integration's **device page** (Settings → Devices &
-Services → Persona of the Day → 1 device).
+Done: a **notification** (bell at the bottom of the left sidebar) appears
+with your guided next steps, and `sensor.persona_of_the_day` now holds
+today's persona. See it and the **Persona re-roll** button on the device
+page: Settings → Devices & Services → Persona of the Day → **1 device**.
 
 ### 2. Get your (free) Google AI key and add the conversation agent
 
